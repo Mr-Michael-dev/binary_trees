@@ -3,31 +3,27 @@
 #include "binary_trees.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
+ *  * main - Entry point
+ *   *
+ *    * Return: Always 0 (Success)
+ *     */
 int main(void)
 {
 	binary_tree_t *root;
 	int balance;
 
 	root = binary_tree_node(NULL, 98);
-	root->left = binary_tree_node(root, 12);
-	root->right = binary_tree_node(root, 402);
-	binary_tree_insert_right(root->left, 54);
-	binary_tree_insert_right(root, 128);
-	binary_tree_insert_left(root, 45);
-	binary_tree_insert_right(root->left, 50);
-	binary_tree_insert_left(root->left->left, 10);
-	binary_tree_insert_left(root->left->left->left, 8);
-	binary_tree_print(root);
+	root->left = binary_tree_node(root, 50);
+	/*root->right = _binary_tree_node(root, 100);*/
+	root->left->left = binary_tree_node(root->left, 40);
+	root->left->right = binary_tree_node(root->left, 60);
+	/*root->right->left = _binary_tree_node(root->right, 99);*/
+	/*root->right->right = _binary_tree_node(root->right, 110);*/
+	root->left->right->left = binary_tree_node(root->left->right, 55);
 
 	balance = binary_tree_balance(root);
-	printf("Balance of %d: %+d\n", root->n, balance);
-	balance = binary_tree_balance(root->right);
-	printf("Balance of %d: %+d\n", root->right->n, balance);
-	balance = binary_tree_balance(root->left->left->right);
-	printf("Balance of %d: %+d\n", root->left->left->right->n, balance);
+	printf("Balance factor for tree with root node (%d): %+d\n", root->n, balance);
+
+	binary_tree_print(root);
 	return (0);
 }
